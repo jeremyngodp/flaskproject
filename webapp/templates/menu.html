@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Our Delicous Menu
+{% endblock %}
+
+{% block body %}
+    
+    <div id="menu">
+        {% for category in categories %}
+            <div id="category">
+                <h3>{{category.cat_name}}</h3>
+                {% if username %}
+                <p>cat_id: {{category.id}}</p>
+                <p><a href="{{url_for('editcategory',cat_id=category.id)}}">Edit Category</a></p>
+                <p><a href="{{url_for('adddish')}}">Add Dish</a></p>
+                {% endif %}
+                {% for dish in dishes%}
+                    {% if dish.cat_id == category.id %}
+                        <div id="dish">
+                            <p>{{dish.cat_name}}</p>
+                            <p>Price = VND {{dish.price}}</p>
+                            <p>Ingredient: {{dish.ingredient}}</p>
+                            <img src="../static/dish_img/{{dish.image}}" alt="this is an image">
+                        </div>
+                    {% endif %}
+                    {% if username %}
+                        <a href="{{url_for('editdish', dish_id = dish.id)}}">Edit Dish</a>
+                        <a href="{{url_for('deletedish', dish_id = dish.id)}}">Delete Dish</a>
+                    {% endif%}
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+    </div>
+    {% if username %}
+        <div id="action">
+            <p><a href="{{url_for('addcategory')}}">Add Category</a></p>
+            
+            <p><a href="{{url_for('adddish')}}">Add Dish</a></p>
+        </div>
+    {% endif %}
+
+{% endblock %}

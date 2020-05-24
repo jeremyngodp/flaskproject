@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Edit Menu
+{% endblock %}
+
+{% block body %}
+    
+    <div id="form">
+        <form action="{{url_for('editdish', dish_id = current_dish.id)}}" method="post">
+            {{form.hidden_tag()}}
+            <fieldset>
+                <div>
+                    {{form.name.label()}}
+                    {{form.name(value = current_dish.name)}}
+                </div>
+
+                <div>
+                    {{form.ingredient.label()}}
+                    {{form.ingredient(value = current_dish.ingredient)}}
+                </div>
+
+                <div>
+                    {{form.cat_name.label()}}
+                    {{form.cat_name()}}
+                </div>
+
+                <div>
+                    {{form.image.label()}}
+                    {{form.image()}}
+                    <img src = "../static/dish_img/{{current_dish.image}}">
+                </div>
+
+                <div>
+                    {{form.price.label()}}
+                    {{form.price(value = current_dish.price)}}
+                </div>
+                
+                <div>
+                    {{form.submit()}}
+                </div>
+            </fieldset>
+        </form>
+    </div>    
+
+{% endblock %}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ page_title }}</title>
+        <style>
+            body{
+                text-align: center;
+            }
+
+            nav{
+                text-align: start;
+            }
+        </style>
+    </head>
+        
+    <body>
+        {% if get_flashed_messages()%}
+            <div id="flash-message">
+            {% for message in get_flashed_messages() %}
+                <p>{{message}}<p>
+            {% endfor %} 
+            </div>
+        {% endif %}
+        <h1>{% block heading %}{% endblock %}</h1>
+        <nav id="navigation">
+            <ul>
+                {% if not username %}
+                <li><a href="{{ url_for('login') }}">Staff Login</a></li>
+                {% else %}
+                <li>
+                    {{username}}
+                    <a href="{{url_for('logout')}}">Logout</a>
+                    <a href="{{url_for('staff')}}">Staff Menu</a>
+                </li>    
+                {% endif %}
+                <li><a href ="{{ url_for('menu') }}">Menu</a> </li>
+                <li><a href ="{{ url_for('history') }}">Information</a></li>
+            </ul>
+        </nav>
+        {% block body %}
+        {% endblock %}
+
+        <a href="{{ url_for('index') }}">Back to Home Page</a>
+    </body>
+</html>

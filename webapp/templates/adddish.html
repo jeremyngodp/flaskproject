@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Add Dish
+{% endblock %}
+
+{% block body %}
+    
+    <div id="form">
+        <form action="{{url_for('adddish')}}" method="post" enctype="multipart/form-data">
+            {{form.hidden_tag()}}
+            <fieldset>
+                <div>
+                    {{form.name.label()}}
+                    {{form.name()}}
+                </div>
+                
+                <div>
+                    {{form.ingredient.label()}}
+                    {{form.ingredient()}}
+                </div>
+
+                <div>
+                    {{form.cat_name.label()}}
+                    {{form.cat_name()}}
+                </div>
+
+                <div>
+                    {{form.price.label()}}
+                    {{form.price()}}
+                </div>
+                
+                <div>
+                    {{form.image.label()}}
+                    {{form.image()}}
+                </div>
+
+                <div>
+                    {{form.submit()}}
+                </div>
+
+            </fieldset>
+        </form>
+    </div>    
+
+{% endblock %}

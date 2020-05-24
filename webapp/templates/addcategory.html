@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Add Category
+{% endblock %}
+
+{% block body %}
+    
+    <div id="form">
+        <form action="{{url_for('addcategory')}}" method="post">
+            {{form.hidden_tag()}}
+            <fieldset>
+                <div>
+                    {{form.name.label()}}
+                    {{form.name()}}
+                </div>
+
+                <div>
+                    {{form.submit()}}
+                </div>
+
+            </fieldset>
+        </form>
+    </div>    
+
+{% endblock %}

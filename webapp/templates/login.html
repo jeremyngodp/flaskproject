@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Staff Login
+{% endblock %}
+
+{% block body %}
+    <div id="form">
+        <form action="{{url_for('login')}}" method="post">
+            {{form.hidden_tag()}}
+            <fieldset> <!--set of empty fields for user inputs-->
+                <div>
+                    {{form.username.label()}}
+                    {{form.username()}}
+                </div>
+
+                <div>
+                    {{form.password.label()}}
+                    {{form.password()}}
+                </div>
+                <div>
+                    {{form.submit()}}
+                </div>
+            </fieldset>
+           
+        </form>
+    </div>
+{% endblock %}

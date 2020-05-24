@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Edit Category
+{% endblock %}
+
+{% block body %}
+    
+    <div id="form">
+        <form action="{{url_for('editcategory', cat_id = current_cat.id)}}" method="post">
+            {{form.hidden_tag()}}
+            <fieldset>
+                <div>
+                    {{form.cat_name.label()}}
+                    {{form.cat_name( value = current_cat.cat_name)}}
+                </div>
+
+                <div>
+                    {{form.submit()}}
+                </div>
+                
+            </fieldset>
+        </form>
+    </div>    
+
+{% endblock %}
